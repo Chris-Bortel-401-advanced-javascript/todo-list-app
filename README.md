@@ -1,19 +1,36 @@
 # To Do List Manager
 ## Author: Edgar Romero, Chris Bortel
 ### Links and Resources
-submission PR
-ci/cd (GitHub Actions)
-back-end server url (when applicable)
-front-end application (when applicable)
-### User Stories
-* As a vendor, I want to alert the system when I have a package to be picked up
-* As a driver, I want to be notified when there is a package to be delivered
-* As a driver, I want to alert the system when I have picked up a package and it is in transit
-* As a driver, I want to alert the system when a package has been delivered
-* As a vendor, I want to be notified when my package has been delivered
-### Setup
+- submission PR
+- ci/cd (GitHub Actions)
+- back-end server url (when applicable)
+- front-end application (when applicable)
+
+<br>
+
+## Phase 1 Requirements
+Today, we begin the first of a 4-phase build of the To Do List Manager, a web-based task manager application, written in React. In this first phase, our goal is to setup a foundational system using React hooks that we can build upon in later phases, adding databases, logins, and more advanced features.
+
+<br>
+
+## User Stories
+- As a user, I would like an easy way to add a new to do item using an online interface
+- As a user, I would like my to do items to have an assignee, due date, difficulty meter, status and the task itself
+- As a user, I would like to delete to do items that are no longer needed
+- As a user, I would like to easily mark to do items as completed
+- As a user, I would like to edit an existing to do item
+
+<br>
+
+## Setup
 To initialize as an pnm project, run the following command:
-`npm init -y`
+<br>
+
+- `git clone https://github.com/Chris-Bortel-401-advanced-javascript/todo-list-app.git`
+
+
+- `npm install`
+
 Dependencies: 
 ```
  "dependencies": {
@@ -29,17 +46,21 @@ Dependencies:
     "web-vitals": "^0.2.4"
   }
 ```
-and add a .env file to your repo, then set the port to 5000.
-- `PORT=`
-.env requirements (where applicable)
-### How to initialize/run your application (where applicable)
---TO RUN THE APPLICATION--
-In the Terminal(s) run:
-`nodemon caps.js || node caps.js `
-### Tests
+
+
+## How to initialize/run your application (where applicable)
+TO RUN THE APPLICATION--
+In the Terminal(s) run: `npm start `
+
+
+
+## Tests
 Tests are handled with the jest testing library. Install jest to the dev dependencies. Follow the command:
 `npm i --save-dev jest`
-### UML
+
+<br>
+
+## UML
 ![whiteboard](assets/Lab-18-UML.jpg)
 
 
