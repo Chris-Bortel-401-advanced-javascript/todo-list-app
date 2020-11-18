@@ -1,7 +1,7 @@
 # To Do List Manager
 ## Author: Edgar Romero, Chris Bortel
 ### Links and Resources
-- submission PR
+- Class-31 [Pull Request]('https://github.com/Chris-Bortel-401-advanced-javascript/todo-list-app/pull/1')
 - ci/cd (GitHub Actions)
 - back-end server url (when applicable)
 - front-end application (when applicable)
@@ -9,7 +9,7 @@
 <br>
 
 ## Phase 1 Requirements
-Today, we begin the first of a 4-phase build of the To Do List Manager, a web-based task manager application, written in React. In this first phase, our goal is to setup a foundational system using React hooks that we can build upon in later phases, adding databases, logins, and more advanced features.
+ In this first phase, our goal is to setup a foundational system using React hooks that we can build upon in later phases, adding databases, logins, and more advanced features.
 
 <br>
 
