@@ -5,19 +5,25 @@ export default function UserForm(props) {
 
   const [details, setDetails] = useState('');
   const [assignee, setAssignee] = useState('');
+  // const [difficulty, setDifficulty] = useState('');
   
-  function handleChangeDetails(value) {
-    console.log(details, value)
-    setDetails(value)
+  function handleChangeDetails(event) {
+    const newDetails = event.target.value
+    console.log(newDetails)
+    setDetails(newDetails)
   }
-  function handleChangeAssignee (value) {
-    console.log(assignee, value)
-    setAssignee(value)
+  function handleChangeAssignee (event) {
+    const newAssignee = event.target.value
+    console.log(newAssignee)
+    setAssignee(newAssignee)
   }
 
   function handleSubmit(e) {
     e.preventDefault()
+    e.target.reset()
     props.handler({details, assignee})
+    setDetails('')
+    setAssignee('')
   }
 
   return (
@@ -26,12 +32,12 @@ export default function UserForm(props) {
     
         <Form.Group controlId="formGroupDetails">
           <Form.Label>To Do Item</Form.Label>
-          <Form.Control type="input" value={details} onChange= {e => handleChangeDetails(e.target.value)} placeholder="Item Details" />
+          <Form.Control type="input" value={details} onChange= {handleChangeDetails} placeholder="Item Details" />
 
         </Form.Group>
         <Form.Group controlId="formGroupAssignee">
           <Form.Label>Assigned to</Form.Label>
-          <Form.Control type="input" value={assignee} onChange= {e => handleChangeAssignee(e.target.value)} placeholder="Assignee Name" />
+          <Form.Control type="input" value={assignee} onChange= {handleChangeAssignee} placeholder="Assignee Name" />
         </Form.Group>
         <Button variant="primary" type="submit">Submit</Button>
       </Form>

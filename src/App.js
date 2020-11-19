@@ -6,14 +6,17 @@ import UserForm from './components/todo/form.js'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
-
+import { Container, Col, Row } from 'react-bootstrap'
 
 function App() {
 const [list, setList] = useState([])
+
 function handleForm(formData){
   console.log(formData)
   setList([...list, formData])
+  console.log(list)
 };
+
   
   return (
     <>
