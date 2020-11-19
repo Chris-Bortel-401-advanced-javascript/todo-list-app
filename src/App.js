@@ -9,26 +9,19 @@ import { useState } from 'react';
 
 
 function App() {
-  
-
-  // const [history, setHistory] = useState('')
-
-
-  // handleForm(responseObj, historyObj ) {
-  //   let isUnique = false;
-  //     history.forEach( obj => {
-  //     if (obj.method === historyObj.method && obj.textarea === historyObj.textarea && obj.input === historyObj.input) {
-  //       isUnique = true;
-  //     }
-  //   })
+const [list, setList] = useState([])
+function handleForm(formData){
+  console.log(formData)
+  setList([...list, formData])
+};
   
   return (
     <>
       <Header />
       <div>
         <h2>To Do List Manager</h2>
-        <UserForm/>
-        {/* <List /> */}
+        <UserForm handler = {handleForm}/>
+        {/* <List listRender = {list}/> */}
       </div>
       {/* < Footer />  */}
     </>
