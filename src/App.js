@@ -2,7 +2,7 @@ import Header from './components/header/header.js'
 // import Footer from './components/footer/footer.js'
 // import If from './components/if/if.js'
 import UserForm from './components/todo/form.js'
-// import List from './components/todo/list.js'
+import TodoList from './components/todo/list.js'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
@@ -20,12 +20,20 @@ function handleForm(formData){
   
   return (
     <>
+    <Container>
       <Header />
-      <div>
+      <Container className = 'p-3'/>
         <h2>To Do List Manager</h2>
+      <Row>
+      <Col xs={12} sm={12} md={6} lg={4}>
         <UserForm handler = {handleForm}/>
-        {/* <List listRender = {list}/> */}
-      </div>
+      </Col>
+      
+      <Col xs={12} sm={12} md={6} lg={8}>
+        <TodoList listRender = {list}/>
+      </Col>
+      </Row>
+      </Container>
       {/* < Footer />  */}
     </>
   );
