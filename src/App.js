@@ -5,11 +5,15 @@ import UserForm from './components/todo/form.js'
 import TodoList from './components/todo/list.js'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container, Col, Row } from 'react-bootstrap'
 
 function App() {
 let [list, setList] = useState([])
+const [title, setTitle] = useState('To Do List:')
+const [complete, setComplete] = useEffect(false)
+// const [count, setCount] = useEffect()
+useDocumentTitle(title);
 
 function handleForm(formData){
   console.log(formData)
@@ -17,6 +21,21 @@ function handleForm(formData){
   console.log(list)
 };
 
+function useDocumentTitle(title) {
+  useState(() => {
+    document.title = title;
+  })
+}
+
+function handleComplete(complete) {
+  useEffect(() => {
+    document.complete = true;
+  })
+}
+
+// function handleDocumentTitle(e) {
+//   setTitle(e.target.value)
+// }
   
   return (
     <>
