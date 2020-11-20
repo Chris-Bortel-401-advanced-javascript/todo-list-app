@@ -1,21 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import {ListGroup} from 'react-bootstrap'
 
-export default function TodoList() {
+export default function TodoList(props) {
 
+   // pass results from form 
   return(
     <>
-
-      <ListGroup as="ul">
-        <ListGroup.Item as="li" active>
-          Cras justo odio
+    <ListGroup className='text-white'>
+      {props.list.map(item => (
+        <ListGroup.Item
+          className={`${item.complete? 'bg-success':'bg-danger'}`}
+          key={item._id}
+        >
+          <span onClick={() => props.handleComplete(item._id)}>
+            {item.text} -- Assignee: {item.assignee}
+          </span>
         </ListGroup.Item>
-        <ListGroup.Item as="li">Dapibus ac facilisis in</ListGroup.Item>
-        <ListGroup.Item as="li" disabled>
-          Morbi leo risus
-        </ListGroup.Item>
-        <ListGroup.Item as="li">Porta ac consectetur ac</ListGroup.Item>
-      </ListGroup>
+      ))}
+    </ListGroup>
     </>
   )
 }

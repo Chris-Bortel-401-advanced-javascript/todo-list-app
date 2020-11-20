@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { Container, Col, Row } from 'react-bootstrap'
 
 function App() {
-const [list, setList] = useState([])
+let [list, setList] = useState([])
 
 function handleForm(formData){
   console.log(formData)
@@ -20,8 +20,8 @@ function handleForm(formData){
   
   return (
     <>
+    <Header />
     <Container>
-      <Header />
       <Container className = 'p-3'/>
         <h2>To Do List Manager</h2>
       <Row>
@@ -30,7 +30,7 @@ function handleForm(formData){
       </Col>
       
       <Col xs={12} sm={12} md={6} lg={8}>
-        <TodoList listRender = {list}/>
+        <TodoList list = {list}/>
       </Col>
       </Row>
       </Container>
