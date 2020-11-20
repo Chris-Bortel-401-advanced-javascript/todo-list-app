@@ -10,6 +10,7 @@ export default function UserForm(props) {
         ...item,
         [e.target.name]: e.target.value,
       };
+      console.log(item)
       setItem(itemUpdate);
  }
 
