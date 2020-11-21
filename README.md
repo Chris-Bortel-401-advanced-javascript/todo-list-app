@@ -61,7 +61,7 @@ Tests are handled with the jest testing library. Install jest to the dev depende
 <br>
 
 ## UML
-![whiteboard](assets/Lab-18-UML.jpg)
+![whiteboard](todo-list-phase1-uml.png)
 
 
 

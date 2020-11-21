@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Card } from 'react-bootstrap'
 
 export default function UserForm(props) {
 
@@ -10,9 +10,8 @@ export default function UserForm(props) {
         ...item,
         [e.target.name]: e.target.value,
       };
-      console.log(item)
       setItem(itemUpdate);
- }
+}
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -24,41 +23,47 @@ export default function UserForm(props) {
   return (
     <>
       <Form onSubmit= {handleSubmit}>
-    
-        <Form.Group controlId="formGroupDetails">
-          <Form.Label>To Do Item</Form.Label>
-          <Form.Control 
-                name="text"
-                type="text" 
-                placeholder="Item Details" 
-                onChange= {handleChangeItem} 
-                />
+        <Card>
+          <Card.Body>
+            <Card.Title>Add To Do Item</Card.Title>
 
-        </Form.Group>
-        <Form.Group controlId="formGroupAssignee">
-          <Form.Label>Assigned to</Form.Label>
-          <Form.Control 
-                name="assignee"
-                type="text"  
-                placeholder="Assignee Name" 
-                onChange= {handleChangeItem} 
-                />
-        </Form.Group>
+          
+          <Form.Group controlId="formGroupDetails">
+            <Form.Label>To Do Item</Form.Label>
+            <Form.Control 
+                  name="text"
+                  type="text" 
+                  placeholder="Item Details" 
+                  onChange= {handleChangeItem} 
+                  />
 
-        <Form.Group controlId="formBasicRangeCustom">
-          <Form.Label>Range</Form.Label>
-          <Form.Control 
-                defaultValue="1"
-                type="range"
-                min="1"
-                max="5"
-                name="range"
-                placeholder="Assignee Name"
-                onChange={handleChangeItem}
-                />
-        </Form.Group>
-        
-        <Button variant="primary" type="submit">Submit</Button>
+          </Form.Group>
+          <Form.Group controlId="formGroupAssignee">
+            <Form.Label>Assigned to</Form.Label>
+            <Form.Control 
+                  name="assignee"
+                  type="text"  
+                  placeholder="Assignee Name" 
+                  onChange= {handleChangeItem} 
+                  />
+          </Form.Group>
+
+          <Form.Group controlId="formBasicRangeCustom">
+            <Form.Label>Range</Form.Label>
+            <Form.Control 
+                  defaultValue="1"
+                  type="range"
+                  min="1"
+                  max="5"
+                  name="range"
+                  placeholder="Assignee Name"
+                  onChange={handleChangeItem}
+                  />
+          </Form.Group>
+          
+          <Button variant="primary" type="submit">Submit</Button>
+          </Card.Body>
+        </Card>
       </Form>
     </>
 

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {ListGroup} from 'react-bootstrap'
 
 export default function TodoList(props) {
 
-   // pass results from form 
   return(
     <>
     <ListGroup className='text-white'>
