@@ -10,27 +10,33 @@ import { Container, Col, Row } from 'react-bootstrap'
 
 function App() {
 let [list, setList] = useState([])
-const [title, setTitle] = useState('To Do List:')
-const [complete, setComplete] = useEffect(false)
+// const [complete, setComplete] = useEffect(false)
 // const [count, setCount] = useEffect()
-useDocumentTitle(title);
+
 
 function handleForm(formData){
   console.log(formData)
-  setList([...list, formData])
+  const item = {...formData, _id:Math.random(), complete:false}
+  setList([...list, item])
   console.log(list)
 };
 
-function useDocumentTitle(title) {
-  useState(() => {
-    document.title = title;
-  })
-}
 
-function handleComplete(complete) {
-  useEffect(() => {
-    document.complete = true;
+useEffect(() => {
+  // do a filter to check h ow many items have a falsey complete status
+  const unfinishedItems = list.filter(i => i.complete === false).length;
+  document.title = `To Do List: ${unfinishedItems}`;
+
   })
+
+
+function toggleComplete (id) {
+
+  let item = list.filter(i => i._id === id)[0] || {};
+  item.complete = !item.complete;
+  let newList = list.map(listItem => listItem._id === item._id ? item : listItem);
+  setList(newList);
+
 }
 
 // function handleDocumentTitle(e) {
@@ -49,7 +55,7 @@ function handleComplete(complete) {
       </Col>
       
       <Col xs={12} sm={12} md={6} lg={8}>
-        <TodoList list = {list}/>
+        <TodoList list = {list} handleComplete={toggleComplete}/>
       </Col>
       </Row>
       </Container>

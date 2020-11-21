@@ -52,7 +52,7 @@ export default function UserForm(props) {
                 type="range"
                 min="1"
                 max="5"
-                name="text"
+                name="range"
                 placeholder="Assignee Name"
                 onChange={handleChangeItem}
                 />
