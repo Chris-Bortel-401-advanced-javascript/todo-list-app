@@ -1,6 +1,7 @@
 # To Do List Manager
 ## Author: Edgar Romero, Chris Bortel
 ### Links and Resources
+- [Netlify Deployment](https://nostalgic-mahavira-2ef425.netlify.app/)
 - Class-31 [Pull Request]('https://github.com/Chris-Bortel-401-advanced-javascript/todo-list-app/pull/1')
 - ci/cd (GitHub Actions)
 - back-end server url (when applicable)
