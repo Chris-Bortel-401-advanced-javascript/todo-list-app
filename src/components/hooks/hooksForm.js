@@ -5,19 +5,19 @@ import {useState} from 'react';
 
 const useForm = (callback) => {
 
-  const [values, setValues] = useState({});
+  const [items, setValues] = useState({});
 
   const handleChange = (e) => {
-    setValues( {...values, [e.target.name]: e.target.value} );
+    setValues( {...items, [e.target.name]: e.target.value} );
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    callback && callback(values);
+    callback && callback(items);
     // if(callback) { callback(values) }
   }
 
-  return [handleSubmit, handleChange, values ];
+  return [handleSubmit, handleChange, items ];
 
 }
 
