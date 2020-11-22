@@ -21,17 +21,18 @@ function App() {
     const unfinishedItems = list.filter(i => i.complete === false).length;
     document.title = `To Do List: ${unfinishedItems}`;
 
-    async function handleSuperagent() {
-      const response = await superagent.get('https://auth-server-cb.herokuapp.com/api/v1/todo')
-      const toDoItems = response.body.results;
-      console.log(toDoItems)
-      setList(toDoItems);
-    }
-
+    
     handleSuperagent();
-
-  }, [])
-
+    
+  },[])// eslint-disable-line react-hooks/exhaustive-deps
+  
+  async function handleSuperagent() {
+    const response = await superagent.get('https://auth-server-cb.herokuapp.com/api/v1/todo')
+    const toDoItems = response.body.results;
+    console.log(toDoItems)
+    setList(toDoItems);
+  }
+  
   function toggleComplete (id) {
     let item = list.filter(i => i._id === id)[0] || {};
     item.complete = !item.complete;
