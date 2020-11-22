@@ -8,41 +8,41 @@ import { Container, Col, Row } from 'react-bootstrap'
 import superagent from 'superagent';
 
 
-
 function App() {
 
-let [list, setList] = useState([])
+  let [list, setList] = useState([])
 
-function handleForm(formData){
-  const item = {...formData, _id:Math.random(), complete:false}
-  setList([...list, item])
-};
+  function handleForm(formData){
+    const item = {...formData, _id:Math.random(), complete:false}
+    setList([...list, item])
+  };
 
-useEffect(() => {
-  const unfinishedItems = list.filter(i => i.complete === false).length;
-  document.title = `To Do List: ${unfinishedItems}`;
+  useEffect(() => {
+    const unfinishedItems = list.filter(i => i.complete === false).length;
+    document.title = `To Do List: ${unfinishedItems}`;
 
-  //make a superagent request to api to get all todo item 
-  async function handleSuperagent() {
-    const response = await superagent.get('https://auth-server-cb.herokuapp.com/api/v1/todo')
-    const toDoItems = response.body.results;
-    console.log(toDoItems)
+    async function handleSuperagent() {
+      const response = await superagent.get('https://auth-server-cb.herokuapp.com/api/v1/todo')
+      const toDoItems = response.body.results;
+      console.log(toDoItems)
+      setList(toDoItems);
+    }
 
+    handleSuperagent();
+
+  }, [])
+
+  function toggleComplete (id) {
+    let item = list.filter(i => i._id === id)[0] || {};
+    item.complete = !item.complete;
+    let newList = list.map(listItem => listItem._id === item._id ? item : listItem);
+    setList(newList);
   }
-  handleSuperagent();
-})
-
-function toggleComplete (id) {
-  let item = list.filter(i => i._id === id)[0] || {};
-  item.complete = !item.complete;
-  let newList = list.map(listItem => listItem._id === item._id ? item : listItem);
-  setList(newList);
-}
 
   return (
     <>
     <Header />
-    <Container>
+      <Container>
       <Container className = 'p-3'/>
         <h2 className = 'text-white bg-dark mt-3 p-3'>To Do List Manager ({list.filter(item => !item.complete).length})</h2>
       <Row>
