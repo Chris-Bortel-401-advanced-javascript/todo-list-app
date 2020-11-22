@@ -17,6 +17,8 @@ function handleForm(formData){
 useEffect(() => {
   const unfinishedItems = list.filter(i => i.complete === false).length;
   document.title = `To Do List: ${unfinishedItems}`;
+
+  //make a superagent request to api to get all todo item 
 })
 
 function toggleComplete (id) {
