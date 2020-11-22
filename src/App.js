@@ -5,8 +5,12 @@ import TodoList from './components/todo/list.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { Container, Col, Row } from 'react-bootstrap'
+import superagent from 'superagent';
+
+
 
 function App() {
+
 let [list, setList] = useState([])
 
 function handleForm(formData){
@@ -19,6 +23,13 @@ useEffect(() => {
   document.title = `To Do List: ${unfinishedItems}`;
 
   //make a superagent request to api to get all todo item 
+  async function handleSuperagent() {
+    const response = await superagent.get('https://auth-server-cb.herokuapp.com/api/v1/todo')
+    const toDoItems = response.body.results;
+    console.log(toDoItems)
+
+  }
+  handleSuperagent();
 })
 
 function toggleComplete (id) {
