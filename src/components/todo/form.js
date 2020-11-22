@@ -1,23 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, Button, Card } from 'react-bootstrap'
+import useForm from '../hooks/hooksForm';
 
 export default function UserForm(props) {
-
-  const [item, setItem] = useState({});
   
-  function handleChangeItem(e) {
-      let itemUpdate = {
-        ...item,
-        [e.target.name]: e.target.value,
-      };
-      setItem(itemUpdate);
-}
+  const [handleSubmit, handleChange, values] = useForm(callUseForm);
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    e.target.reset()
-    props.handler(item)
-    setItem({})
+  function callUseForm(expect){
+    props.handler(expect)
   }
 
   return (
@@ -34,7 +24,7 @@ export default function UserForm(props) {
                   name="text"
                   type="text" 
                   placeholder="Item Details" 
-                  onChange= {handleChangeItem} 
+                  onChange= {handleChange} 
                   />
 
           </Form.Group>
@@ -44,7 +34,7 @@ export default function UserForm(props) {
                   name="assignee"
                   type="text"  
                   placeholder="Assignee Name" 
-                  onChange= {handleChangeItem} 
+                  onChange= {handleChange} 
                   />
           </Form.Group>
 
@@ -57,7 +47,7 @@ export default function UserForm(props) {
                   max="5"
                   name="range"
                   placeholder="Assignee Name"
-                  onChange={handleChangeItem}
+                  onChange={handleChange}
                   />
           </Form.Group>
           
