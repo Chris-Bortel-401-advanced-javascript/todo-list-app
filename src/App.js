@@ -15,6 +15,12 @@ function App() {
   function handleForm(formData){
     const item = {...formData, _id:Math.random(), complete:false}
     setList([...list, item])
+    async function handleSuperagentAdd() {
+    const request = await superagent.post(list)('https://auth-server-cb.herokuapp.com/api/v1/todo')
+  console.log(request)
+    setList([...list, request])
+  }
+  handleSuperagentAdd()
   };
 
   useEffect(() => {
@@ -31,6 +37,8 @@ function App() {
     const toDoItems = response.body.results;
     console.log(toDoItems)
     setList(toDoItems);
+    // if we are re-rendering the page run a get() 
+    //if we are submitting the form, run a post() to the api
   }
   
   function toggleComplete (id) {

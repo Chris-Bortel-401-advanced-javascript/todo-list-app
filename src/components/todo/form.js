@@ -52,7 +52,7 @@ export default function UserForm(props) {
                   />
           </Form.Group>
           
-          <Button variant="primary" type="submit">Submit</Button>
+          <Button variant="primary" type="submit" value="post">Submit</Button>
           </Card.Body>
         </Card>
       </Form>
