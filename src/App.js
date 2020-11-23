@@ -6,22 +6,45 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { Container, Col, Row } from 'react-bootstrap'
 import superagent from 'superagent';
+import axios from 'axios';
+const url = 'https://auth-server-cb.herokuapp.com/api/v1/todo';
 
 
-function App() {
+export default function App() {
 
-  let [list, setList] = useState([])
+  const [refresh, triggerRefresh] = useState(false)
+  const [list, setList] = useState([])
+  const [error, setError] = useState(null)
 
-  function handleForm(formData){
-    const item = {...formData, _id:Math.random(), complete:false}
-    setList([...list, item])
-    async function handleSuperagentAdd() {
-    const request = await superagent.post(list)('https://auth-server-cb.herokuapp.com/api/v1/todo')
-  console.log(request)
-    setList([...list, request])
+
+  async function handleForm(item) {
+    const config = {
+      method: 'post',
+      url,
+      data: {
+        ...item,
+        complete:false
+      },
+    };
+    try{
+      await axios(config);
+      triggerRefresh(!refresh);
+      setError(null);
+    }
+    catch (error){
+      setError(error.message);
+    }
   }
-  handleSuperagentAdd()
-  };
+  // function handleForm(formData){
+  //   const item = {...formData, _id:Math.random(), complete:false}
+  //   setList([...list, item])
+  //   async function handleSuperagentAdd() {
+  //   const request = await superagent.post(list)('https://auth-server-cb.herokuapp.com/api/v1/todo')
+  // console.log(request)
+  //   setList([...list, request])
+  // }
+  // handleSuperagentAdd()
+  // };
 
   useEffect(() => {
     const unfinishedItems = list.filter(i => i.complete === false).length;
@@ -68,5 +91,3 @@ function App() {
     </>
   );
 }
-
-export default App;
