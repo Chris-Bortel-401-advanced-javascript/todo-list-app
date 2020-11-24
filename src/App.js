@@ -5,16 +5,15 @@ import TodoList from './components/todo/list.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { Container, Col, Row } from 'react-bootstrap'
-import superagent from 'superagent';
 import axios from 'axios';
 const url = 'https://auth-server-cb.herokuapp.com/api/v1/todo';
 
 
 export default function App() {
 
-  const [refresh, triggerRefresh] = useState(false)
-  const [list, setList] = useState([])
-  const [error, setError] = useState(null)
+  const [refresh, triggerRefresh] = useState(false);
+  const [list, setList] = useState([]);
+  const [error, setError] = useState(null);
 
 
   async function handleForm(item) {
@@ -34,24 +33,6 @@ export default function App() {
     catch (error){
       setError(error.message);
     }
-  }
-  
-
-  useEffect(() => {
-    const unfinishedItems = list.filter(i => i.complete === false).length;
-    document.title = `To Do List: ${unfinishedItems}`;
-
-    
-    handleSuperagent();
-    
-  },[])// eslint-disable-line react-hooks/exhaustive-deps
-  
-  async function handleSuperagent() {
-    const response = await superagent.get('https://auth-server-cb.herokuapp.com/api/v1/todo')
-    const toDoItems = response.body.results;
-    console.log(toDoItems)
-    setList(toDoItems);
-
   }
   
   async function toggleComplete (id) {
@@ -74,6 +55,7 @@ export default function App() {
       setError(error.message);
     }
   }
+
   async function deleteItem(id){
     const config = {
       method: 'delete',
@@ -89,12 +71,35 @@ export default function App() {
     }
   }
 
+  useEffect(() => {
+    const getToDoList = async () => {
+      const config = {
+        method: 'get',
+        url,
+      };
+      try{
+        const {data} = await axios(config);
+        setList(data.results);
+        setError(null);
+      }
+      catch(error){
+        setError(error.message);
+      }
+    };
+    getToDoList();
+  }, [refresh]);
+
+  useEffect(() => {
+    const unfinishedItems = list.filter(item => !item.complete).length;
+    document.title = `To Do List: ${unfinishedItems}`;  
+  });
+
   return (
     <>
     <Header />
       <Container>
       <Container className = 'p-3'/>
-        <h2 className = 'text-white bg-dark mt-3 p-3'>To Do List Manager ({list.filter(item => !item.complete).length})</h2>
+      <h2 className = 'text-white bg-dark mt-3 p-3'>To Do List Manager ({list.filter(item => !item.complete).length})</h2>
       <Row>
       <Col xs={12} sm={12} md={6} lg={4}>
         <UserForm handler = {handleForm}/>
