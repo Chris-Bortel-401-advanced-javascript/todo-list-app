@@ -14,6 +14,9 @@ export default function TodoList(props) {
           <span onClick={() => props.handleComplete(item._id)}>
             {item.text} -- Assignee: {item.assignee}
           </span>
+          <button onClick={() => props.handleDelete(item._id)}>
+            Delete
+          </button>
         </ListGroup.Item>
       ))}
     </ListGroup>
