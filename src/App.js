@@ -35,16 +35,7 @@ export default function App() {
       setError(error.message);
     }
   }
-  // function handleForm(formData){
-  //   const item = {...formData, _id:Math.random(), complete:false}
-  //   setList([...list, item])
-  //   async function handleSuperagentAdd() {
-  //   const request = await superagent.post(list)('https://auth-server-cb.herokuapp.com/api/v1/todo')
-  // console.log(request)
-  //   setList([...list, request])
-  // }
-  // handleSuperagentAdd()
-  // };
+  
 
   useEffect(() => {
     const unfinishedItems = list.filter(i => i.complete === false).length;
@@ -60,15 +51,28 @@ export default function App() {
     const toDoItems = response.body.results;
     console.log(toDoItems)
     setList(toDoItems);
-    // if we are re-rendering the page run a get() 
-    //if we are submitting the form, run a post() to the api
+
   }
   
-  function toggleComplete (id) {
+  async function toggleComplete (id) {
     let item = list.filter(i => i._id === id)[0] || {};
-    item.complete = !item.complete;
-    let newList = list.map(listItem => listItem._id === item._id ? item : listItem);
-    setList(newList);
+
+    const config = {
+      method: 'put',
+      url: `${url}/${id}`,
+      data: {
+        ...item,
+        complete:!item.complete,
+      },
+    };
+    try{
+      await axios(config);
+      triggerRefresh(!refresh);
+      setError(null);
+    }
+    catch(error){
+      setError(error.message);
+    }
   }
 
   return (
