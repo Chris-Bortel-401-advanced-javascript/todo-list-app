@@ -74,6 +74,20 @@ export default function App() {
       setError(error.message);
     }
   }
+  async function deleteItem(id){
+    const config = {
+      method: 'delete',
+      url: `${url}/${id}`,
+    };
+    try{
+      await axios(config);
+      triggerRefresh(!refresh);
+      setError(null);
+    }
+    catch(error){
+      setError(error.message);
+    }
+  }
 
   return (
     <>
@@ -87,7 +101,7 @@ export default function App() {
       </Col>
       
       <Col xs={12} sm={12} md={6} lg={8}>
-        <TodoList list = {list} handleComplete={toggleComplete}/>
+        <TodoList list = {list} handleComplete={toggleComplete} handleDelete={deleteItem} error={error}/>
       </Col>
       </Row>
       </Container>
