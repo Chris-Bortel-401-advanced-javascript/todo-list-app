@@ -16,9 +16,7 @@ return(
         console.log(settingsContext)
         const switchTasks = settingsContext.settings.showComplete === false ? filteredCompletedTasks : props.list;
         console.log(switchTasks)
-        {/* // TODO: look up how to do sort... a.difficulty b.difficulty etc.a
-
-        const sort = switchTasks.sort() */}
+        
 
         return(
 

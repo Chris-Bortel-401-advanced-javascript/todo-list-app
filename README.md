@@ -63,7 +63,8 @@ Tests are handled with the jest testing library. Install jest to the dev depende
 <br>
 
 ## UML
-![whiteboard](todo-list-phase1-uml.png)
+![class 31 whiteboard](todo-list-phase1-uml.png)
+![class 33 whiteboard](todo-list-phase3-uml.png)
 
 
 

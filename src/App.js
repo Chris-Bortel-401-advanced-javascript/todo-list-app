@@ -82,6 +82,7 @@ export default function App() {
       try{
         const {data} = await axios(config);
         setList(data.results);
+        console.log(data.results)
         setError(null);
       }
       catch(error){
@@ -90,7 +91,10 @@ export default function App() {
     };
     getToDoList();
   }, [refresh]);
-
+  console.log(list[5])
+  console.log(list.length)
+  // console.log('we will iterate through list.length[i]', list[5].difficulty)
+  
   useEffect(() => {
     const unfinishedItems = list.filter(item => !item.complete).length;
     document.title = `To Do List: ${unfinishedItems}`;  
