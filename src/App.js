@@ -2,6 +2,8 @@ import Header from './components/header/header.js'
 import UserForm from './components/todo/form.js'
 import TodoList from './components/todo/list.js'
 
+import SettingsContext from './context/settings/context.js'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { Container, Col, Row } from 'react-bootstrap'
@@ -97,6 +99,8 @@ export default function App() {
   return (
     <>
     <Header />
+      
+    <SettingsContext>
       <Container>
       <Container className = 'p-3'/>
       <h2 className = 'text-white bg-dark mt-3 p-3'>To Do List Manager ({list.filter(item => !item.complete).length})</h2>
@@ -110,6 +114,7 @@ export default function App() {
       </Col>
       </Row>
       </Container>
+    </SettingsContext>
       {/* < Footer />  */}
     </>
   );
