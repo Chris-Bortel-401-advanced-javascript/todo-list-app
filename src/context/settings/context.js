@@ -6,8 +6,16 @@ function Settings(props) {
   const defaultSettings = {
     showComplete: false,
     maxNumber: 3,
-    sort: 'difficulty',
+    difficulty: 'ascending',
   } 
+
+  const [settings, setSettings] = useState(defaultSettings);
+  console.log(settings, 'settings line 13')
+  const pageLoad = () => setSettings(settings);
+
+  // function ascending() {
+  //   console.log('ascending is working')
+  // } 
 
   // put the items through a .sort based on the difficulty property 
   // we will sort on every render/ everytime that we add a task
@@ -26,9 +34,6 @@ function Settings(props) {
   //sort(data.results[i].difficulty)
   
   // will want to add 
-  const [settings, setSettings] = useState(defaultSettings);
-
-  const pageLoad = () => setSettings(settings);
 
   return (
     <SettingsContext.Provider value={ {settings, pageLoad} }>
