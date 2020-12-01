@@ -17,7 +17,6 @@ export default function UserForm(props) {
         <Card>
           <Card.Body>
             <Card.Title>Add To Do Item</Card.Title>
-
           
           <Form.Group controlId="formGroupDetails">
             <Form.Label>To Do Item</Form.Label>
@@ -27,8 +26,8 @@ export default function UserForm(props) {
                   placeholder="Item Details" 
                   onChange= {handleChange} 
                   />
-
           </Form.Group>
+          
           <Form.Group controlId="formGroupAssignee">
             <Form.Label>Assigned to</Form.Label>
             <Form.Control 
@@ -42,9 +41,9 @@ export default function UserForm(props) {
           <Form.Group controlId="formBasicRangeCustom">
             <Form.Label>Range</Form.Label>
             <Form.Control 
-                  defaultValue="1"
+                  defaultValue="0"
                   type="range"
-                  min="1"
+                  min="0"
                   max="5"
                   name="difficulty"
                   placeholder="Assignee Name"
@@ -57,6 +56,5 @@ export default function UserForm(props) {
         </Card>
       </Form>
     </>
-
   );
 }

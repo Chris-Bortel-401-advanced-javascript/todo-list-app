@@ -3,6 +3,7 @@
 ### Links and Resources
 - [Netlify Deployment](https://5fbaee2f6f4ad000083c8bb1--nostalgic-mahavira-2ef425.netlify.app/)
 - Class-31 [Pull Request]('https://github.com/Chris-Bortel-401-advanced-javascript/todo-list-app/pull/1')
+- Class-33 [Pull Request]('https://github.com/Chris-Bortel-401-advanced-javascript/todo-list-app/pull/9')
 - ci/cd (GitHub Actions)
 - back-end server url (when applicable)
 - front-end application (when applicable)
@@ -62,7 +63,8 @@ Tests are handled with the jest testing library. Install jest to the dev depende
 <br>
 
 ## UML
-![whiteboard](todo-list-phase1-uml.png)
+![class 31 whiteboard](todo-list-phase1-uml.png)
+![class 33 whiteboard](todo-list-phase3-uml.png)
 
 
 
