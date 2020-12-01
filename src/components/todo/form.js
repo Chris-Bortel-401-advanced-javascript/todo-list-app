@@ -17,7 +17,6 @@ export default function UserForm(props) {
         <Card>
           <Card.Body>
             <Card.Title>Add To Do Item</Card.Title>
-
           
           <Form.Group controlId="formGroupDetails">
             <Form.Label>To Do Item</Form.Label>
@@ -27,8 +26,8 @@ export default function UserForm(props) {
                   placeholder="Item Details" 
                   onChange= {handleChange} 
                   />
-
           </Form.Group>
+          
           <Form.Group controlId="formGroupAssignee">
             <Form.Label>Assigned to</Form.Label>
             <Form.Control 
@@ -57,6 +56,5 @@ export default function UserForm(props) {
         </Card>
       </Form>
     </>
-
   );
 }

@@ -91,9 +91,8 @@ export default function App() {
     };
     getToDoList();
   }, [refresh]);
-  console.log(list[5])
-  console.log(list.length)
-  // console.log('we will iterate through list.length[i]', list[5].difficulty)
+  // console.log(list[5])
+  // console.log(list.length)
   
   useEffect(() => {
     const unfinishedItems = list.filter(item => !item.complete).length;
