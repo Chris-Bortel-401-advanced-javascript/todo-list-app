@@ -41,9 +41,9 @@ export default function UserForm(props) {
           <Form.Group controlId="formBasicRangeCustom">
             <Form.Label>Range</Form.Label>
             <Form.Control 
-                  defaultValue="1"
+                  defaultValue="0"
                   type="range"
-                  min="1"
+                  min="0"
                   max="5"
                   name="difficulty"
                   placeholder="Assignee Name"

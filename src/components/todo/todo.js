@@ -80,8 +80,12 @@ export default function Todo() {
       };
       try{
         const {data} = await axios(config);
-        setList(data.results);
-        console.log(data.results)
+        let array = data.results;
+        array.sort((a,b) => {
+          return a.difficulty - b.difficulty;
+        });
+        setList(array);
+        console.log(array);
         setError(null);
       }
       catch(error){
@@ -90,8 +94,6 @@ export default function Todo() {
     };
     getToDoList();
   }, [refresh]);
-  // console.log(list[5])
-  // console.log(list.length)
   
   useEffect(() => {
     const unfinishedItems = list.filter(item => !item.complete).length;
