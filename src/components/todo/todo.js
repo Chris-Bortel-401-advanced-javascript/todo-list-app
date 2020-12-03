@@ -1,6 +1,7 @@
 import UserForm from './form.js'
 import TodoList from './list.js'
 import SettingsContext from '../../context/settings/context.js'
+import Auth from '../../context/auth/auth.js'
 
 import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
