@@ -19,7 +19,7 @@ return(
         <div>
           { switchTasks.map(item => (
 
-            <Toast key={item._id}>
+            <Toast key={item._id} onClose={() => props.handleDelete(item._id)}>
               <Toast.Header>
                 <div onClick={() => props.handleComplete(item._id)}>
                     <Badge  pill variant="danger" className={`${item.complete? 'bg-danger':'bg-success'}`} key={item._id}>
