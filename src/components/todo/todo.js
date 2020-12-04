@@ -107,9 +107,8 @@ export default function Todo() {
   });
 
   return (
-    <>
-     <Auth>
-
+    
+    <Auth>
     <SettingsContext>
       <Container>
       <Container className = 'p-3'/>
@@ -125,8 +124,6 @@ export default function Todo() {
       </Row>
       </Container>
     </SettingsContext>
-     </Auth>
-
-    </>
+    </Auth>
   );
 }
