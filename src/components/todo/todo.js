@@ -18,6 +18,7 @@ export default function Todo() {
   const [error, setError] = useState(null);
 
 
+  // Auth will go around this
   async function handleForm(item) {
     const config = {
       method: 'post',
@@ -37,6 +38,7 @@ export default function Todo() {
     }
   }
   
+  // Auth will go around this
   async function toggleComplete (id) {
     let item = list.filter(i => i._id === id)[0] || {};
 
@@ -58,6 +60,7 @@ export default function Todo() {
     }
   }
 
+  // Auth will go around this
   async function deleteItem(id){
     const config = {
       method: 'delete',
@@ -73,6 +76,8 @@ export default function Todo() {
     }
   }
 
+
+  // Auth will go around this
   useEffect(() => {
     const getToDoList = async () => {
       const config = {
@@ -103,7 +108,8 @@ export default function Todo() {
 
   return (
     <>
-     
+     <Auth>
+
     <SettingsContext>
       <Container>
       <Container className = 'p-3'/>
@@ -119,6 +125,7 @@ export default function Todo() {
       </Row>
       </Container>
     </SettingsContext>
+     </Auth>
 
     </>
   );
