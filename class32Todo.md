@@ -4,4 +4,7 @@
 ### lab 34
 
 
+<<<<<<< Updated upstream
    
+=======
+>>>>>>> Stashed changes
