@@ -7,15 +7,15 @@ import {If, Then, Else} from 'react-if';
 function Login(props) {
 
   const userContext = useContext(LoginContext);
-  const [user, setUser] = useState({});
+  const [users, setUsers] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    userContext.login(user);
+    userContext.login(users);
   }
 
   const handleChange = (e) => {
-    setUser( { ...user, [e.target.name]: e.target.value })
+    setUsers( { ...users, [e.target.name]: e.target.value })
   }
 
   return (

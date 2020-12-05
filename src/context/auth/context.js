@@ -8,7 +8,7 @@ export const LoginContext = React.createContext();
 function LoginProvider(props) {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState({});
+  const [users, setUsers] = useState({});
 
   const login = async (input) => {
     const API = process.env.REACT_APP_API;
@@ -33,20 +33,20 @@ function LoginProvider(props) {
       let tokenUser = jwt.verify(token, process.env.REACT_APP_SECRET)
       // if we're here, the token was good
       setIsLoggedIn(true);
-      setUser(tokenUser)
+      setUsers(tokenUser)
       cookie.save('auth', token);
       // set a cookie so that we can stay logged in
       // Optionally, make it only last 1 hour or until you close
     } catch(e) {
       setIsLoggedIn(false);
-      setUser({});
+      setUsers({});
       console.warn("Token Validation Error");
     }
   }
 
   const logout = () => {
     setIsLoggedIn(false);
-    setUser({});
+    setUsers({});
   }
 
   useEffect( () => {
@@ -56,7 +56,7 @@ function LoginProvider(props) {
 
   return (
     <LoginContext.Provider
-      value={ {isLoggedIn, user, login, logout} }
+      value={ {isLoggedIn, users, login, logout} }
     >
       {props.children}
     </LoginContext.Provider>

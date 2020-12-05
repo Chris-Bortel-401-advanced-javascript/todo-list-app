@@ -13,7 +13,7 @@ function Auth(props) {
   try {
     // canDo == if we asked for a capability AND user can do it
     let canDo = props.capability
-      ? loginContext.user.capabilities.includes(props.capability)
+      ? loginContext.users.permissions.includes(props.capability)
       : true;
 
       okToRender = loginContext.isLoggedIn && canDo;
