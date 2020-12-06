@@ -2,30 +2,25 @@
 ## Author: Edgar Romero, Chris Bortel
 ### Links and Resources
 - [Netlify Deployment](https://5fbaee2f6f4ad000083c8bb1--nostalgic-mahavira-2ef425.netlify.app/)
-- Class-31 [Pull Request]('https://github.com/Chris-Bortel-401-advanced-javascript/todo-list-app/pull/1')
-- Class-33 [Pull Request]('https://github.com/Chris-Bortel-401-advanced-javascript/todo-list-app/pull/9')
+- Class-31 [Pull Request](https://github.com/Chris-Bortel-401-advanced-javascript/todo-list-app/pull/1)
+- Class-33 [Pull Request](https://github.com/Chris-Bortel-401-advanced-javascript/todo-list-app/pull/9)
+- Class-34 [Pull Request](https://github.com/Chris-Bortel-401-advanced-javascript/todo-list-app/pull/11)
 - ci/cd (GitHub Actions)
 - back-end server url (when applicable)
 - front-end application (when applicable)
 
 <br>
 
-## Phase 1 Requirements
- In this first phase, our goal is to setup a foundational system using React hooks that we can build upon in later phases, adding databases, logins, and more advanced features.
-
-<br>
-
-## User Stories
-- As a user, I would like an easy way to add a new to do item using an online interface
-- As a user, I would like my to do items to have an assignee, due date, difficulty meter, status and the task itself
-- As a user, I would like to delete to do items that are no longer needed
-- As a user, I would like to easily mark to do items as completed
-- As a user, I would like to edit an existing to do item
-
+ #### [Phase 1 Requirements](docs/phase1.md)
+ #### [Phase 2 Requirements](docs/phase2.md)
+ #### [Phase 3 Requirements](docs/phase3.md)
+ #### [Phase 4 Requirements](docs/phase4.md)
+ #### [Business and Technical Requirements](docs/business-tech-requirements.md)
+ 
 <br>
 
 ## Setup
-To initialize as an pnm project, run the following command:
+To initialize as an npm project, run the following command:
 <br>
 
 - `git clone https://github.com/Chris-Bortel-401-advanced-javascript/todo-list-app.git`
