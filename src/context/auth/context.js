@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import superagent from 'superagent';
 import jwt from 'jsonwebtoken';
 import cookie from 'react-cookies';
