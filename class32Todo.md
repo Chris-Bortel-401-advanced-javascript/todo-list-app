@@ -3,8 +3,7 @@
 
 ### lab 34
 
+NEED TO:
+- Unhide completed tasks
 
-<<<<<<< Updated upstream
    
-=======
->>>>>>> Stashed changes
