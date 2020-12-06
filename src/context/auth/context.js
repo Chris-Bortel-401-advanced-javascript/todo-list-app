@@ -16,7 +16,7 @@ function LoginProvider(props) {
     try {
     const response = await superagent.post(`${API}/signin`)
       .auth( input.username, input.password );
-
+      console.log(response.body)
     const {token} = response.body;
 
     validateToken(token);
@@ -33,6 +33,7 @@ function LoginProvider(props) {
       let tokenUser = jwt.verify(token, process.env.REACT_APP_SECRET)
       // if we're here, the token was good
       setIsLoggedIn(true);
+      console.log(tokenUser)
       setUsers(tokenUser)
       cookie.save('auth', token);
       // set a cookie so that we can stay logged in
@@ -49,10 +50,10 @@ function LoginProvider(props) {
     setUsers({});
   }
 
-  useEffect( () => {
-    const token = cookie.load('auth') || null;
-    validateToken(token);
-  },[])
+  // useEffect( () => {
+  //   const token = cookie.load('auth') || null;
+  //   validateToken(token);
+  // },[])
 
   return (
     <LoginContext.Provider

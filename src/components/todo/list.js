@@ -1,24 +1,25 @@
 import React, {useContext} from 'react';
 import Toast from 'react-bootstrap/Toast'
 import Badge from 'react-bootstrap/Badge'
-import Auth from '../../context/auth/auth.js'
+// import Auth from '../../context/auth/auth.js'
 
 import {LoginContext} from '../../context/auth/context.js';
 import {SettingsContext} from '../../context/settings/context.js';
 
 export default function TodoList(props) {
   
-
-  // const settingsContext = useContext(SettingsContext);
-  const loginContext = useContext(LoginContext);
+const loginContext = useContext(LoginContext);
 
 const filteredCompletedTasks = props.list.filter(item => {
   return item.complete !== true;
 })
 
-function canDelete(users) {
-  console.log(users);
-  return users.permissions.includes('delete')
+// TODO:
+function canDo(user) {
+  console.log(user);
+  return user.role === ('admin');
+  // TODO: When we have the below line of code, the permissions in undefined, but with line 21, permissions is defined. What is going on?
+  // return user.permissions.includes('delete')
 }
 
 return(
@@ -31,7 +32,7 @@ return(
           { switchTasks.map(item => (
 
             <Toast key={item._id} onClose={() => props.handleDelete(item._id)}>
-              <Toast.Header closeButton={canDelete(loginContext.users)}>
+              <Toast.Header closeButton={canDo(loginContext.users)}>
                 <div onClick={() => props.handleComplete(item._id)}>
                     <Badge  pill variant="danger" className={`${item.complete? 'bg-danger':'bg-success'}`} key={item._id}>
                       {item.complete? 'Complete':'Pending'}
@@ -47,9 +48,9 @@ return(
                 </span>
               </Toast.Body>
             </Toast>
+
           ))}
         </div>
-
         )   
       }}
   </SettingsContext.Consumer>

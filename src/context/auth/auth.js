@@ -2,12 +2,12 @@ import React, {useContext} from 'react';
 
 import {LoginContext} from './context.js';
 import {When} from 'react-if';
-import Login from './login.js';
+// import Login from './login.js';
 
 function Auth(props) {
 
   const loginContext = useContext(LoginContext);
-
+console.log(loginContext.users)
   let okToRender = false;
 
   try {

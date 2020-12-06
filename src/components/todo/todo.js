@@ -7,8 +7,9 @@ import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Col, Row } from 'react-bootstrap'
 import axios from 'axios';
+import cookie from 'react-cookies';
 
-const url = 'https://auth-server-cb.herokuapp.com/api/v1/todo';
+const url = 'https://auth-server-cb.herokuapp.com/api/v2/todo';
 
 
 export default function Todo() {
@@ -17,10 +18,11 @@ export default function Todo() {
   const [list, setList] = useState([]);
   const [error, setError] = useState(null);
 
-
   // Auth will go around this
   async function handleForm(item) {
+    const token = cookie.load('auth') || null;
     const config = {
+      headers: { Authorization: `Bearer ${token}` },
       method: 'post',
       url,
       data: {
@@ -41,8 +43,10 @@ export default function Todo() {
   // Auth will go around this
   async function toggleComplete (id) {
     let item = list.filter(i => i._id === id)[0] || {};
+    const token = cookie.load('auth') || null;
 
     const config = {
+      headers: { Authorization: `Bearer ${token}` },
       method: 'put',
       url: `${url}/${id}`,
       data: {
@@ -62,7 +66,9 @@ export default function Todo() {
 
   // Auth will go around this
   async function deleteItem(id){
+    const token = cookie.load('auth') || null;
     const config = {
+      headers: { Authorization: `Bearer ${token}` },
       method: 'delete',
       url: `${url}/${id}`,
     };
@@ -79,8 +85,13 @@ export default function Todo() {
 
   // Auth will go around this
   useEffect(() => {
+    const unfinishedItems = list.filter(item => !item.complete).length;
+    document.title = `To Do List: ${unfinishedItems}`;  
+
     const getToDoList = async () => {
+      const token = cookie.load('auth') || null;
       const config = {
+        headers: { Authorization: `Bearer ${token}` },
         method: 'get',
         url,
       };
@@ -99,12 +110,9 @@ export default function Todo() {
       }
     };
     getToDoList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refresh]);
-  
-  useEffect(() => {
-    const unfinishedItems = list.filter(item => !item.complete).length;
-    document.title = `To Do List: ${unfinishedItems}`;  
-  });
+
 
   return (
     
