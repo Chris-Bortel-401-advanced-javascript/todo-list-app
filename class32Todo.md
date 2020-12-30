@@ -5,5 +5,5 @@
 
 NEED TO:
 - Unhide completed tasks
-
+- be able to sign up
    
